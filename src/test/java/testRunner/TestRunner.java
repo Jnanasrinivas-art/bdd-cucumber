@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
         glue = {"steps"},
         plugin = {"pretty","html:reports/Report14.html"},
         dryRun = false,
-        monochrome = true
-        //tags = "@P24"
+        monochrome = true,
+        tags = "@P2"
         //name = {"Logo"}
 )
 public class TestRunner

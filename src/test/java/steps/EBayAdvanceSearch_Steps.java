@@ -1,12 +1,11 @@
 package steps;
 
+import Hooks.Common_Steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.fail;
 
@@ -14,11 +13,14 @@ public class EBayAdvanceSearch_Steps
 {
     WebDriver driver;
 
+    public EBayAdvanceSearch_Steps(Common_Steps common_steps)
+    {
+        this.driver=common_steps.getDriver();
+    }
+
     @Given("Iam on EBay Advanced Search Page")
     public void iam_on_e_bay_advanced_search_page()
     {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
         driver.get("https://www.ebay.com/sch/ebayadvsearch");
     }
     @When("I click on EBay Logo")
@@ -36,8 +38,6 @@ public class EBayAdvanceSearch_Steps
         {
             fail("Page does not navigate to Home Page");
         }
-        driver.quit();
-
     }
 
 }

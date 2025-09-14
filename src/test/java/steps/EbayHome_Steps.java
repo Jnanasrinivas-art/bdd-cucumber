@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -54,20 +55,21 @@ public class EbayHome_Steps
 
     @When("I search for {string} in {string} category")
     public void i_search_for_in_category(String str1, String str2) throws InterruptedException {
-        driver.findElement(By.xpath("//input[@title='Search']")).sendKeys(str1);
-        driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
-        Thread.sleep(2000);
-        List<WebElement> cat =driver.findElements(By.xpath("//select[@id='gh-ca']/option"));
+        driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys(str1);
+        Thread.sleep(3000);
+        List<WebElement> cat =driver.findElements(By.xpath("//select[@id='gh-cat']/option"));
         for(WebElement x:cat)
         {
-            if(x.getText().trim().equals(str2))
+            System.out.println(x.getText());
+            if(x.getText().trim().equalsIgnoreCase(str2))
             {
                 x.click();
                 break;
             }
         }
+        Thread.sleep(3000);
         driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
-
+        Thread.sleep(3000);
     }
 
     @Then("I validate atleast {int} search items present")

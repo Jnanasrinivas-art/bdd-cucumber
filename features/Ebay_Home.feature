@@ -20,3 +20,8 @@ Feature: Ebay Home Page Scenarios
     Given Iam on Ebay Home Page
     When I search for "Toy Cars"
     Then I validate atleast 100 search items present
+
+    @P35
+    Scenario: Search an item in category
+      Given Iam on Ebay Home Page
+      When I search for "soap" in "Baby" category

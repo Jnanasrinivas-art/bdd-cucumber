@@ -6,6 +6,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static org.junit.Assert.fail;
 
@@ -48,6 +51,25 @@ public class EbayHome_Steps
         driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
 
     }
+
+    @When("I search for {string} in {string} category")
+    public void i_search_for_in_category(String str1, String str2) throws InterruptedException {
+        driver.findElement(By.xpath("//input[@title='Search']")).sendKeys(str1);
+        driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
+        Thread.sleep(2000);
+        List<WebElement> cat =driver.findElements(By.xpath("//select[@id='gh-ca']/option"));
+        for(WebElement x:cat)
+        {
+            if(x.getText().trim().equals(str2))
+            {
+                x.click();
+                break;
+            }
+        }
+        driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
+
+    }
+
     @Then("I validate atleast {int} search items present")
     public void i_validate_atleast_search_items_present(int count) throws InterruptedException {
         Thread.sleep(4000);

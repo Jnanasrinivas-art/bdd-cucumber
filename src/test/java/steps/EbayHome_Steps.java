@@ -41,20 +41,20 @@ public class EbayHome_Steps
         driver.quit();
     }
 
-    @When("I search for iPhone11")
-    public void i_search_for_i_phone11()
+    @When("I search for {string}")
+    public void i_search_for_i_phone11(String str1)
     {
-        driver.findElement(By.xpath("//input[@title='Search']")).sendKeys("iPhone 11");
+        driver.findElement(By.xpath("//input[@title='Search']")).sendKeys(str1);
         driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
 
     }
-    @Then("I validate atleast 1000 search items present")
-    public void i_validate_atleast_search_items_present() throws InterruptedException {
+    @Then("I validate atleast {int} search items present")
+    public void i_validate_atleast_search_items_present(int count) throws InterruptedException {
         Thread.sleep(4000);
         String itemCount = driver.findElement(By.cssSelector("h1.srp-controls__count-heading>span.BOLD:first-child")).getText();
         String itemCount2=itemCount.replace(",","");
         int itemCountInt = Integer.parseInt(itemCount2);
-        if(itemCountInt<1000)
+        if(itemCountInt<count)
         {
             fail("Less than 1000 results ");
         }

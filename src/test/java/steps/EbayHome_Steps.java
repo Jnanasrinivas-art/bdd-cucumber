@@ -42,7 +42,7 @@ public class EbayHome_Steps
     }
 
     @When("I search for iPhone11")
-    public void i_search_for_i_phone_i_phone11()
+    public void i_search_for_i_phone11()
     {
         driver.findElement(By.xpath("//input[@title='Search']")).sendKeys("iPhone 11");
         driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();

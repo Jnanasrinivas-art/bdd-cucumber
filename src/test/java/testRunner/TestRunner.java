@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty","html:reports/Report14.html"},
         dryRun = false,
         monochrome = true,
-        tags = "@P35"
+        tags = "@P39"
         //name = {"Logo"}
 )
 public class TestRunner

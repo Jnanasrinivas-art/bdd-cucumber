@@ -7,7 +7,7 @@ Feature: Ebay Home Page Scenarios
     When I click on Advance Link
     Then I navigate to Advance search page
 
-    @P2
+  @P2
   Scenario: Search items count
 
     Given Iam on Ebay Home Page
@@ -21,7 +21,18 @@ Feature: Ebay Home Page Scenarios
     When I search for "Toy Cars"
     Then I validate atleast 100 search items present
 
-    @P35
-    Scenario: Search an item in category
-      Given Iam on Ebay Home Page
-      When I search for "soap" in "Baby" category
+  @P35
+  Scenario: Search an item in category
+    Given Iam on Ebay Home Page
+    When I search for "soap" in "Baby" category
+
+  @P356
+  Scenario Outline: Home Page links
+    Given Iam on Ebay Home Page
+    When I click on '<link>'
+    Then I validate that page navigates to '<url>' and title contains '<title>'
+    Examples:
+      | link    | url                                                          | title          |
+      | Motors  | https://www.ebay.com/b/Auto-Parts-Accessories/6028/bn_569479 | Auto Parts     |
+      | Fashion | https://www.ebay.com/b/Fashion/bn_7000259856                 | Fashion        |
+      | Sports  | https://www.ebay.com/b/Sporting-Goods/888/bn_1865031         | Sporting Goods |

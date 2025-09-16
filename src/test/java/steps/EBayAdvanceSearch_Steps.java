@@ -55,27 +55,4 @@ public class EBayAdvanceSearch_Steps
         Thread.sleep(2700);
     }
 
-    @When("I click on {string}")
-    public void i_click_on(String string) throws InterruptedException
-    {
-        driver.findElement(By.linkText(string)).click();
-        Thread.sleep(2000);
-    }
-
-    @Then("I validate that page navigates to {string} and title contains {string}")
-    public void i_validate_that_page_navigates_to_and_title_contains(String url, String title)
-    {
-        String actUrl=driver.getCurrentUrl();
-        String actTitle=driver.getTitle();
-        if(!actUrl.equals(url))
-        {
-            fail("page does not navigate to expected url" +url);
-        }
-        if(!actTitle.equals(title))
-        {
-            fail("Title mismatch");
-        }
-    }
-
-
 }

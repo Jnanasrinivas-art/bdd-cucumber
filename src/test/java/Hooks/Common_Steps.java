@@ -16,6 +16,7 @@ public class Common_Steps
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        System.out.println("Global Hook executed");
     }
 
     @After
@@ -23,6 +24,18 @@ public class Common_Steps
     {
         driver.quit();
         Thread.sleep(1500);
+    }
+
+    @Before("@setCookies")
+    public void setCookies()
+    {
+        System.out.println("Scenario specific hook - setCookies executed");
+    }
+
+    @After("Test")
+    public void testAfterHook()
+    {
+        System.out.println("Scenario specific hook - testAfterHook executed");
     }
 
     public WebDriver getDriver()

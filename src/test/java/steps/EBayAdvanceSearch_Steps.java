@@ -1,6 +1,8 @@
 package steps;
 
 import Hooks.Common_Steps;
+import Utility.Common_Actions;
+import actions.EbayAdvanceSearch_Actions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,23 +14,29 @@ import static org.junit.Assert.fail;
 
 public class EBayAdvanceSearch_Steps
 {
-    WebDriver driver;
+    private WebDriver driver;
+    Common_Actions common_actions;
+    EbayAdvanceSearch_Actions ebayAdvanceSearch_actions;
 
-    public EBayAdvanceSearch_Steps(Common_Steps common_steps)
+    public EBayAdvanceSearch_Steps(Common_Actions common_actions,EbayAdvanceSearch_Actions ebayAdvanceSearch_actions)
     {
-        this.driver=common_steps.getDriver();
+         this.common_actions=common_actions;
+         this.ebayAdvanceSearch_actions=ebayAdvanceSearch_actions;
     }
 
     @Given("Iam on EBay Advanced Search Page")
     public void iam_on_e_bay_advanced_search_page()
     {
-        driver.get("https://www.ebay.com/sch/ebayadvsearch");
+        //driver.get("https://www.ebay.com/sch/ebayadvsearch");
+        common_actions.goToUrl("https://www.ebay.com/sch/ebayadvsearch");
+
     }
     @When("I click on EBay Logo")
-    public void i_click_on_e_bay_logo() throws InterruptedException {
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//div[@class='gh-header__logo-cats-wrap']/a")).click();
-        Thread.sleep(4000);
+    public void i_click_on_e_bay_logo() throws InterruptedException
+    {
+        common_actions.maximizeWindow();
+        ebayAdvanceSearch_actions.clickOnEbayLogo();
+        Thread.sleep(2000);
     }
     @Then("Iam navigated to EBay Home Page")
     public void iam_navigated_to_e_bay_home_page()

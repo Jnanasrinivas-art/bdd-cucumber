@@ -4,6 +4,8 @@ import Hooks.Common_Steps;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.junit.Assert.fail;
+
 public class Common_Actions
 {
      WebDriver driver;
@@ -25,5 +27,15 @@ public class Common_Actions
     public void maximizeWindow()
     {
         driver.manage().window().maximize();
+    }
+
+    public void validatePageTitle()
+    {
+        String expUrl ="https://www.ebay.com/";
+        String actUrl= driver.getCurrentUrl();
+        if(!expUrl.equals(actUrl))
+        {
+            fail("Page does not navigate to Home Page");
+        }
     }
 }

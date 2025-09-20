@@ -10,6 +10,7 @@ public class EbayAdvanceSearch_Actions
 {
     private WebDriver driver;
     EbayAdvanceSearch_Elements ebayAdvanceSearch_elements;
+
     public EbayAdvanceSearch_Actions(Common_Steps common_steps)
     {
         this.driver=common_steps.getDriver();
@@ -18,7 +19,7 @@ public class EbayAdvanceSearch_Actions
 
     public void clickOnEbayLogo()
     {
-
+        ebayAdvanceSearch_elements.ebayLogo.click();
     }
 
 }

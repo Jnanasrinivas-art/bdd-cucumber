@@ -27,9 +27,7 @@ public class EBayAdvanceSearch_Steps
     @Given("Iam on EBay Advanced Search Page")
     public void iam_on_e_bay_advanced_search_page()
     {
-        //driver.get("https://www.ebay.com/sch/ebayadvsearch");
         common_actions.goToUrl("https://www.ebay.com/sch/ebayadvsearch");
-
     }
     @When("I click on EBay Logo")
     public void i_click_on_e_bay_logo() throws InterruptedException
@@ -41,12 +39,7 @@ public class EBayAdvanceSearch_Steps
     @Then("Iam navigated to EBay Home Page")
     public void iam_navigated_to_e_bay_home_page()
     {
-        String expUrl ="https://www.ebay.com/";
-        String actUrl= driver.getCurrentUrl();
-        if(!expUrl.equals(actUrl))
-        {
-            fail("Page does not navigate to Home Page");
-        }
+        common_actions.validatePageTitle();
     }
 
     @When("I advanced search an item")

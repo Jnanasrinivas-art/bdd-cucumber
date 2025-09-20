@@ -7,7 +7,7 @@ Feature: Ebay Home Page Scenarios
     When I click on Advance Link
     Then I navigate to Advance search page
 
-  @P2
+  @P2 @P6
   Scenario: Search items count
 
     Given Iam on Ebay Home Page

@@ -10,29 +10,30 @@ public class Common_Steps
 {
     private WebDriver driver;
 
-    @Before
+    @Before(order = 0)
     public void setUp()
     {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        System.out.println("Global Hook executed");
+        System.out.println("Global Before Hook executed");
     }
 
-    @After
+    @After(order = 0)
     public void tearDown() throws InterruptedException
     {
         driver.quit();
         Thread.sleep(1500);
+        System.out.println("Global After Hook Executed");
     }
 
-    @Before("@setCookies")
+    @Before(value = "@setCookies",order = 1)
     public void setCookies()
     {
         System.out.println("Scenario specific hook - setCookies executed");
     }
 
-    @After("Test")
+    @After(value = "@Test",order = 1)
     public void testAfterHook()
     {
         System.out.println("Scenario specific hook - testAfterHook executed");

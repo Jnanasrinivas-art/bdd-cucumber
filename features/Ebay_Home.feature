@@ -1,6 +1,6 @@
 Feature: Ebay Home Page Scenarios
 
-  @P1 @setCookies
+  @P1 @setCookies @Test
   Scenario: Advance Search Link
 
     Given Iam on Ebay Home Page

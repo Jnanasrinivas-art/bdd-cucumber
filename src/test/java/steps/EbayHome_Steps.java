@@ -1,6 +1,9 @@
 package steps;
 
 import Hooks.Common_Steps;
+import Utility.Common_Actions;
+import actions.EbayHome_Actions;
+import elements.EbayHome_Elements;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,32 +20,35 @@ public class EbayHome_Steps
 {
     public WebDriver driver;
 
-    public EbayHome_Steps(Common_Steps common_steps)
+    Common_Actions common_actions;
+    EbayHome_Actions ebayHome_actions;
+
+    public EbayHome_Steps(Common_Actions common_actions,EbayHome_Actions ebayHome_actions)
+
     {
-        this.driver=common_steps.getDriver();
+        this.common_actions=common_actions;
+        this.ebayHome_actions=ebayHome_actions;
     }
 
     @Given("Iam on Ebay Home Page")
     public void iam_on_ebay_home_page()
     {
-        driver.get("https://www.ebay.com/");
+        //driver.get("https://www.ebay.com/");
+        common_actions.goToUrl("https://www.ebay.com/");
     }
     @When("I click on Advance Link")
     public void i_click_on_advance_link()
     {
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//a[text()='Advanced']")).click();
+        //driver.manage().window().maximize();
+        //driver.findElement(By.xpath("//a[text()='Advanced']")).click();
+        common_actions.maximizeWindow();
+        ebayHome_actions.clickAdvanced();
+
     }
     @Then("I navigate to Advance search page")
     public void i_navigate_to_advance_search_page()
     {
-        String expUrl="https://www.ebay.com/sch/ebayadvsearch";
-        String actUrl=driver.getCurrentUrl();
-        if(!expUrl.equals(actUrl))
-        {
-            fail("Page does not navigate to Home Page");
-        }
-        driver.quit();
+         common_actions.validatePageTitleforAdvanced();
     }
 
     @When("I search for {string}")

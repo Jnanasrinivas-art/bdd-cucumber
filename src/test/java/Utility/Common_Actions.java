@@ -38,4 +38,14 @@ public class Common_Actions
             fail("Page does not navigate to Home Page");
         }
     }
+
+    public void validatePageTitleforAdvanced()
+    {
+        String expUrl="https://www.ebay.com/sch/ebayadvsearch";
+        String actUrl=driver.getCurrentUrl();
+        if(!expUrl.equals(actUrl))
+        {
+            fail("Page does not navigate to Advance Page");
+        }
+    }
 }

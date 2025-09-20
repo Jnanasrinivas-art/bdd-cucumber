@@ -27,18 +27,6 @@ public class Common_Steps
         System.out.println("Global After Hook Executed");
     }
 
-    @Before(value = "@setCookies",order = 1)
-    public void setCookies()
-    {
-        System.out.println("Scenario specific hook - setCookies executed");
-    }
-
-    @After(value = "@Test",order = 1)
-    public void testAfterHook()
-    {
-        System.out.println("Scenario specific hook - testAfterHook executed");
-    }
-
     public WebDriver getDriver()
     {
         return driver;

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty","json:target/json-report/cucumber.json"},
         dryRun = false,
         monochrome = true,
-        tags = "@P1"
+        tags = "@P2"
         //name = {"Logo"}
 )
 public class TestRunner

@@ -19,6 +19,11 @@ public class EbayHome_Elements
     @FindBy(xpath = "//a[text()='Advanced']")
     public WebElement Advanced;
 
+    @FindBy(xpath = "//input[@title='Search']")
+    public WebElement search;
+
+    @FindBy(xpath = "//button[@id='gh-search-btn']")
+    public WebElement srchBtn;
 
 
 }

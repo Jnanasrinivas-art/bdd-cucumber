@@ -19,7 +19,7 @@ public class Tagged_Hooks
         System.out.println("Scenario specific hook - setCookies executed");
     }
 
-    @After(value = "@Test",order = 1)
+    @After(value = "@Test",order = 0)
     public void testAfterHook()
     {
         System.out.println("Scenario specific hook - testAfterHook executed");

@@ -2,7 +2,10 @@ package Hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -18,9 +21,15 @@ public class Common_Steps
         System.out.println("Global Before Hook executed");
     }
 
-    @After(order = 0)
-    public void tearDown() throws InterruptedException
+    @After(order = 1)
+    public void tearDown(Scenario scenario) throws InterruptedException
     {
+        if(scenario.isFailed())
+        {
+            //Takes Screenshot
+            final byte[] scr =((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(scr,"img/png",scenario.getName());
+        }
         driver.quit();
         Thread.sleep(1500);
         System.out.println("Global After Hook Executed");

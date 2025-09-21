@@ -52,10 +52,10 @@ public class EbayHome_Steps
     }
 
     @When("I search for {string}")
-    public void i_search_for_i_phone11(String str1)
-    {
-        driver.findElement(By.xpath("//input[@title='Search']")).sendKeys(str1);
-        driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
+    public void i_search_for_i_phone11(String value) throws InterruptedException {
+        ebayHome_actions.doSearch(value);
+        //driver.findElement(By.xpath("//input[@title='Search']")).sendKeys(str1);
+        //driver.findElement(By.xpath("//button[@id='gh-search-btn']")).click();
 
     }
 

@@ -21,4 +21,22 @@ public class EbayHome_Actions
     {
         ebayHome_elements.Advanced.click();
     }
+
+    public void enterInSearch(String value)
+    {
+        ebayHome_elements.search.sendKeys(value);
+    }
+
+    public void clickSearchBtn()
+    {
+        ebayHome_elements.srchBtn.click();
+    }
+
+    public void doSearch(String value) throws InterruptedException
+    {
+        this.enterInSearch(value);
+        this.clickSearchBtn();
+        Thread.sleep(2000);
+    }
+
 }

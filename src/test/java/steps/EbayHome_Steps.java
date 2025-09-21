@@ -80,14 +80,9 @@ public class EbayHome_Steps
 
     @Then("I validate atleast {int} search items present")
     public void i_validate_atleast_search_items_present(int count) throws InterruptedException {
-        Thread.sleep(4000);
-        String itemCount = driver.findElement(By.cssSelector("h1.srp-controls__count-heading>span.BOLD:first-child")).getText();
-        String itemCount2=itemCount.replace(",","");
-        int itemCountInt = Integer.parseInt(itemCount2);
-        if(itemCountInt<count)
-        {
-            fail("Less than 1000 results ");
-        }
+        Thread.sleep(1000);
+        ebayHome_actions.getItemCountAndCompare(count);
+
     }
 
     @When("I click on {string}")

@@ -6,6 +6,8 @@ import elements.EbayHome_Elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import static org.junit.Assert.fail;
+
 public class EbayHome_Actions
 {
     private WebDriver driver;
@@ -30,6 +32,18 @@ public class EbayHome_Actions
     public void clickSearchBtn()
     {
         ebayHome_elements.srchBtn.click();
+    }
+
+    public void getItemCountAndCompare(int count)
+    {
+        String itemCount = ebayHome_elements.itemCount.getText();
+        String itemCount2=itemCount.replace(",","");
+        int itemCountInt = Integer.parseInt(itemCount2);
+        System.out.println(itemCountInt);
+        if(itemCountInt<count)
+        {
+            fail("Less than 1000 results ");
+        }
     }
 
     public void doSearch(String value) throws InterruptedException

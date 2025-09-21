@@ -1,6 +1,7 @@
 package elements;
 
 import Hooks.Common_Steps;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,9 @@ public class EbayHome_Elements
 
     @FindBy(xpath = "//button[@id='gh-search-btn']")
     public WebElement srchBtn;
+
+    @FindBy(css ="h1.srp-controls__count-heading>span.BOLD:first-child")
+    public WebElement itemCount;
 
 
 }

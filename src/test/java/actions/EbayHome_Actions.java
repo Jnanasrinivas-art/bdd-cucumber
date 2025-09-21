@@ -40,7 +40,7 @@ public class EbayHome_Actions
         String itemCount2=itemCount.replace(",","");
         int itemCountInt = Integer.parseInt(itemCount2);
         System.out.println(itemCountInt);
-        if(itemCountInt<count)
+        if(itemCountInt>count)
         {
             fail("Less than 1000 results ");
         }

@@ -15,7 +15,6 @@ public class Common_Steps
     {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         System.out.println("Global Before Hook executed");
     }
 
